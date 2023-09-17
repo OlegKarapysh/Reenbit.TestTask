@@ -1,0 +1,34 @@
+@import "/src/styles/colors"
+@import "/src/styles/font"
+
+$border-size: 2px
+
+.base-button
+    font-size: $large-font-size
+    font-weight: bold
+    padding: 10px
+    align: center
+    border-radius: 5px
+    cursor: pointer
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    transition: background-color 0.3s, color 0.3s
+
+.enabled-button
+    @extend .base-button
+    background-color: transparent
+    color: $blue
+    border: $border-size solid $blue
+
+    &:hover
+        background-color: $blue
+        color: $white
+
+.disabled-button
+    @extend .base-button
+    background-color: transparent
+    color: $gray
+    cursor: default
+    pointer-events: none
+    border: $border-size solid $gray

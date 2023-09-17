@@ -1,0 +1,6 @@
+<button [disabled]="isDisabled" [ngClass]="{
+        'disabled-button': isDisabled,
+        'enabled-button': !isDisabled,
+    }" (click)="handleClick()">
+    {{ text }}
+</button>
