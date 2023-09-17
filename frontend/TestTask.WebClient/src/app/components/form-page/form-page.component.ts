@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import {
     FormBuilder,
     FormControl,
@@ -6,6 +6,8 @@ import {
     Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Subject, takeUntil, tap } from 'rxjs';
+import { WebApiService } from 'src/app/services/web-api.service';
 import { CustomValidators } from 'src/app/validators/custom-validators';
 
 @Component({
@@ -13,29 +15,53 @@ import { CustomValidators } from 'src/app/validators/custom-validators';
     templateUrl: './form-page.component.html',
     styleUrls: ['./form-page.component.sass'],
 })
-export class FormPageComponent {
+export class FormPageComponent implements OnDestroy {
     public readonly docxExtension = '.docx';
     public form: FormGroup = new FormGroup({});
     public emailFormControl: FormControl;
     public fileFormControl: FormControl;
+    public isLoading = false;
 
     private selectedFile: File | undefined;
+    private unsubscribe$ = new Subject<void>();
 
     constructor(
         private formBuilder: FormBuilder,
-        private notificationService: ToastrService
+        private notificationService: ToastrService,
+        private webApiService: WebApiService
     ) {
         this.initForm();
         this.emailFormControl = this.form.controls['email'] as FormControl;
         this.fileFormControl = this.form.controls['docxFile'] as FormControl;
     }
 
+    ngOnDestroy(): void {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
+    }
+
     public submitForm(): void {
+        if (!this.selectedFile) {
+            return;
+        }
+
         console.log(this.form.value.email);
         console.log(this.selectedFile);
-        this.notificationService.success(
-            'Your file is successfully submitted! Check out your email for SAS token'
-        );
+
+        this.isLoading = true;
+        this.webApiService
+            .uploadForm(this.selectedFile, this.form.value.email)
+            .pipe(
+                takeUntil(this.unsubscribe$),
+                tap(() => (this.isLoading = false))
+            )
+            .subscribe(
+                () =>
+                    this.notificationService.success(
+                        'Your file is successfully submitted! Check out your email for SAS token'
+                    ),
+                (error) => this.notificationService.error(error.error)
+            );
     }
 
     public onFileChange(files: any): void {

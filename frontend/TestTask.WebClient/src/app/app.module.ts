@@ -8,6 +8,7 @@ import { FormPageComponent } from './components/form-page/form-page.component';
 import { InputComponent } from './components/input/input.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonComponent } from './components/button/button.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { ButtonComponent } from './components/button/button.component';
     imports: [
         BrowserAnimationsModule,
         BrowserModule,
+        HttpClientModule,
         ReactiveFormsModule,
         ToastrModule.forRoot({
             positionClass: 'toast-bottom-right',
