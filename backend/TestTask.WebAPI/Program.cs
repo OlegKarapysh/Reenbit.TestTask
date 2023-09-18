@@ -7,9 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpClient(builder.Configuration);
 builder.Services.AddAzureBlobClient(builder.Configuration);
 builder.Services.AddBlobStorageService();
 builder.Services.AddValidators();
+builder.Services.AddAzureFunctionTriggerService();
 
 var app = builder.Build();
 

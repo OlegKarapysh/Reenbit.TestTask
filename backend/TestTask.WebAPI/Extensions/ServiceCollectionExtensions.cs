@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.Azure;
+using TestTask.WebAPI.Services.AzureFunctionTriggerService;
 using TestTask.WebAPI.Services.BlobStorageService;
 using TestTask.WebAPI.Validators;
 
@@ -24,5 +25,18 @@ public static class ServiceCollectionExtensions
     {
         services.AddScoped<IValidator<IFormFile>, DocxFileValidator>();
         services.AddScoped<IValidator<string>, EmailValidator>();
+    }
+
+    public static void AddHttpClient(this IServiceCollection services, IConfiguration config)
+    {
+        services.AddHttpClient("AzureFunctionHttpClient", client =>
+        {
+            client.BaseAddress = new Uri(config["AzureFuncUrl"]);
+        });
+    }
+
+    public static void AddAzureFunctionTriggerService(this IServiceCollection services)
+    {
+        services.AddScoped<IAzureFunctionTriggerService, AzureFunctionTriggerService>();
     }
 }

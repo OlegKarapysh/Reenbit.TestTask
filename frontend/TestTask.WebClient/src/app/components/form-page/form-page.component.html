@@ -27,6 +27,6 @@
                 The file must have .docx extension!
             </div>
         </div>
-        <app-button text="Submit" [isDisabled]="form.invalid" (buttonOnClick)="submitForm()"></app-button>
+        <app-button text="Submit" [isDisabled]="form.invalid || isLoading" (buttonOnClick)="submitForm()"></app-button>
     </div>
 </div>

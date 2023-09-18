@@ -45,10 +45,8 @@ export class FormPageComponent implements OnDestroy {
             return;
         }
 
-        console.log(this.form.value.email);
-        console.log(this.selectedFile);
-
         this.isLoading = true;
+        this.notificationService.info('Your file is uploading...');
         this.webApiService
             .uploadForm(this.selectedFile, this.form.value.email)
             .pipe(
