@@ -477,5 +477,6 @@ $RECYCLE.BIN/
 *.lnk
 
 .idea/
-TestTask.WebAPI/Properties/ServiceDependencies/
-TestTask.WebAPI/Properties/PublishProfiles/
+/TestTask.WebAPI/Properties/ServiceDependencies/
+/TestTask.WebAPI/Properties/PublishProfiles/
+/.vs/
