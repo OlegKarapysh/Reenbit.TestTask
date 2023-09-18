@@ -2,5 +2,5 @@
 
 public interface IBlobStorageService
 {
-    Task UploadFile(IFormFile file, string email);
+    Task<Uri> UploadFileAsync(IFormFile file, string email);
 }

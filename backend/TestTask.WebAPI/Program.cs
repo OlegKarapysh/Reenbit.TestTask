@@ -9,6 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAzureBlobClient(builder.Configuration);
 builder.Services.AddBlobStorageService();
+builder.Services.AddValidators();
 
 var app = builder.Build();
 

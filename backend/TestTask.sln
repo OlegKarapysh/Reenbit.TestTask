@@ -1,8 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTask.WebAPI", "TestTask.WebAPI\TestTask.WebAPI.csproj", "{2984B0CA-B9BC-430B-93BF-307E9BFE79AE}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTask.WebAPI", "TestTask.WebAPI\TestTask.WebAPI.csproj", "{2984B0CA-B9BC-430B-93BF-307E9BFE79AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTask.UnitTests", "TestTask.UnitTests\TestTask.UnitTests.csproj", "{0788A174-74A0-4698-8EE7-D6F3E18F1E94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTask.UnitTests", "TestTask.UnitTests\TestTask.UnitTests.csproj", "{0788A174-74A0-4698-8EE7-D6F3E18F1E94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTask.AzureFunction", "TestTask.AzureFunction\TestTask.AzureFunction.csproj", "{D422AD05-D2F7-4FBE-8FC6-94C3A583299C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +23,12 @@ Global
 		{0788A174-74A0-4698-8EE7-D6F3E18F1E94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0788A174-74A0-4698-8EE7-D6F3E18F1E94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0788A174-74A0-4698-8EE7-D6F3E18F1E94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D422AD05-D2F7-4FBE-8FC6-94C3A583299C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D422AD05-D2F7-4FBE-8FC6-94C3A583299C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D422AD05-D2F7-4FBE-8FC6-94C3A583299C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D422AD05-D2F7-4FBE-8FC6-94C3A583299C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
