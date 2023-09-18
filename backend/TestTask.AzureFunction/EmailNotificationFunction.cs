@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Threading.Tasks;
 using MailKit.Net.Smtp;
@@ -26,14 +25,12 @@ public static class EmailNotificationFunction
         var requestBody = await new StreamReader(req.Body).ReadToEndAsync();
         var data = JsonConvert.DeserializeObject<FileEmailDto>(requestBody);
 
-        Console.WriteLine(data);
-
         var configuration = GetConfiguration(context);
         var emailSettings = GetEmailSettings(configuration);
         var emailMessage = CreateEmailMessage(emailSettings, data.Email, data.FileUri, "");
         await SendMessageAsync(emailMessage, emailSettings);
 
-        return new OkObjectResult(data);
+        return new OkResult();
     }
 
     private static async Task SendMessageAsync(MimeMessage message, EmailSettings emailSettings)
@@ -59,7 +56,7 @@ public static class EmailNotificationFunction
         {
             Subject = "Your file is successfully uploaded to Azure Blob Storage!"
         };
-        emailMessage.From.Add(new MailboxAddress("sender", emailSettings.From));
+        emailMessage.From.Add(new MailboxAddress("NotificationFromAzureFunc", emailSettings.From));
         emailMessage.To.Add(new MailboxAddress("receiver", email));
         emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text)
         {
