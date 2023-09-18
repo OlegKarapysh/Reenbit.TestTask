@@ -57,13 +57,13 @@ public static class EmailNotificationFunction
     {
         var emailMessage = new MimeMessage
         {
-            Subject = "Your file successfully uploaded to Azure Blob Storage!"
+            Subject = "Your file is successfully uploaded to Azure Blob Storage!"
         };
         emailMessage.From.Add(new MailboxAddress("sender", emailSettings.From));
         emailMessage.To.Add(new MailboxAddress("receiver", email));
         emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text)
         {
-            Text = $"Your docx file was uploaded, here is the URL to it ({uri}) and SAS token"
+            Text = $"Your docx file was uploaded, here is the URL with SAS token: {uri}"
         };
 
         return emailMessage;
