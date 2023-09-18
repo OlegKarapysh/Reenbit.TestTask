@@ -1,0 +1,7 @@
+<label>
+    <p>{{ label }}</p>
+    <div class="input-wrapper">
+        <input [type]="type" [placeholder]="placeholder" [formControl]="control" [accept]="accept"
+            (change)="onInputChange($event)">
+    </div>
+</label>

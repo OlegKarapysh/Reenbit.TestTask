@@ -1,0 +1,32 @@
+<div class="flex-centered">
+    <div class="form">
+        <app-input [formControl]="$any(emailFormControl)" label="Email address:"
+            placeholder="Enter your email address..."></app-input>
+        <div *ngIf="emailFormControl.touched">
+            <div class="invalid-feedback" *ngIf="emailFormControl.errors?.['required']">
+                The email is required!
+            </div>
+            <div class="invalid-feedback" *ngIf="emailFormControl.errors?.['minlength']">
+                Email must be at least {{emailFormControl.errors?.['minlength'].requiredLength}} characters!
+            </div>
+            <div class="invalid-feedback" *ngIf="emailFormControl.errors?.['maxlength']">
+                Email must be at most
+                {{emailFormControl.errors?.['maxlength'].requiredLength}} characters
+            </div>
+            <div class="invalid-feedback" *ngIf="emailFormControl.errors?.['emailMatch']">
+                This email format is not valid!
+            </div>
+        </div>
+        <app-input [formControl]="$any(fileFormControl)" type="file" [accept]="docxExtension" label="Your docx file:"
+            (onChange)="onFileChange($event.target.files)"></app-input>
+        <div *ngIf="fileFormControl.touched">
+            <div class="invalid-feedback" *ngIf="fileFormControl.errors?.['required']">
+                The .docx file is required!
+            </div>
+            <div class="invalid-feedback" *ngIf="fileFormControl.errors?.['fileExtensionMatch']">
+                The file must have .docx extension!
+            </div>
+        </div>
+        <app-button text="Submit" [isDisabled]="form.invalid || isLoading" (buttonOnClick)="submitForm()"></app-button>
+    </div>
+</div>
