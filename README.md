@@ -1,5 +1,5 @@
 # Reenbit.TestTask
-Link to web application: https://reenbittesttaskwebclient1.azurewebsites.net/
+Link to web application: https://reenbittesttaskwebclient1.azurewebsites.net/ (May take up to 30 seconds to open the website because of the free server)
 
 ## Implemented functionality:
   - one web page with a form for email and .docx file
